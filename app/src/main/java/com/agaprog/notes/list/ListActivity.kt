@@ -8,6 +8,8 @@ import android.view.MenuItem
 import android.widget.CheckBox
 import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.agaprog.notes.R
 import com.agaprog.notes.databinding.ActivityListBinding
 import com.agaprog.notes.list.item.Item
@@ -24,11 +26,15 @@ class ListActivity : AppCompatActivity() {
         _binding = ActivityListBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        //Load list
-        val listLayout = findViewById<LinearLayout>(R.id.listLayout)
-        val listService = ListService(this)
-        list = listService.list
-        addListToLayout(listLayout)
+        val list = ListService(this).list
+        val listAdapter = ListAdapter(
+            list,
+            { item, pos -> moveHandler(item, pos)},
+            { item, pos -> editHandler(item, pos)},
+        )
+
+        val layoutManager: RecyclerView.LayoutManager =LinearLayoutManager(this)
+        binding.listContainer.layoutManager = layoutManager
 
         //New Item Fragment
         /*val newItem = findViewById<Button>(R.id.newButton)
@@ -39,6 +45,14 @@ class ListActivity : AppCompatActivity() {
             fragmentTransaction.addToBackStack(null)
             fragmentTransaction.commit()
         }*/
+    }
+
+    private fun editHandler(item: Item, pos: Int) {
+
+    }
+
+    private fun moveHandler(item: Item, pos: Int) {
+
     }
 
 
@@ -57,23 +71,11 @@ class ListActivity : AppCompatActivity() {
         return super.onOptionsItemSelected(item)
     }
 
-
-    private fun addListToLayout(layout: LinearLayout) {
-        list.forEach {
-            var itemView = LayoutInflater.from(this).inflate(R.layout.item_layout, null, false)
-            itemView.findViewById<CheckBox>(R.id.checkbox).isChecked = it.check
-            itemView.findViewById<TextView>(R.id.title).text = it.title
-            itemView.findViewById<TextView>(R.id.description).text = it.description
-            itemView.findViewById<TextView>(R.id.date).text = it.getFormattedDate()
-            layout.addView(itemView)
-        }
-    }
-
     private fun addItemToLayout(text: String) {
         val textView = TextView(this)
         textView.text = text
 
-        val listLayout = findViewById<LinearLayout>(R.id.listLayout)
-        listLayout.addView(textView)
+    //    val listLayout = findViewById<LinearLayout>(R.id.listLayout)
+    //    listLayout.addView(textView)
     }
 }

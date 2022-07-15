@@ -4,6 +4,10 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/dmoviles/AndroidStudioProjects/Notes/app/src/main/res/drawable/ic_baseline_menu_24.xml" value="0.2385" />
+        <entry key="..\:/Users/dmoviles/AndroidStudioProjects/Notes/app/src/main/res/layout/activity_json.xml" value="0.1" />
+        <entry key="..\:/Users/dmoviles/AndroidStudioProjects/Notes/app/src/main/res/layout/activity_list.xml" value="0.15070921985815602" />
+        <entry key="..\:/Users/dmoviles/AndroidStudioProjects/Notes/app/src/main/res/layout/item_file_list_layout.xml" value="0.11574074074074074" />
+        <entry key="..\:/Users/dmoviles/AndroidStudioProjects/Notes/app/src/main/res/layout/item_json_list.xml" value="0.25" />
         <entry key="..\:/Users/dmoviles/AndroidStudioProjects/Notes/app/src/main/res/layout/item_layout.xml" value="0.26132246376811596" />
         <entry key="..\:/Users/dmoviles/AndroidStudioProjects/Notes/app/src/main/res/menu/menu.xml" value="0.334375" />
       </map>

@@ -6,6 +6,7 @@ import android.util.Log
 import android.view.MenuItem
 import com.agaprog.notes.R
 import com.agaprog.notes.config.ConfigActivity
+import com.agaprog.notes.json.JsonActivity
 import com.agaprog.notes.list.ListActivity
 import com.agaprog.notes.login.LoginActivity
 
@@ -15,6 +16,7 @@ class MenuHandler constructor(val context:Context, val current: String) {
     fun itemHandler(item: MenuItem) {
         when (item.itemId) {
             R.id.configMenu -> openConfig(current)
+            R.id.configMenu -> openJson(current)
             R.id.listMenu -> openList(current)
             R.id.loginMenu -> openLogin(current)
         }
@@ -25,6 +27,14 @@ class MenuHandler constructor(val context:Context, val current: String) {
             intent = null
         } else {
             intent = Intent(context, ConfigActivity::class.java)
+        }
+    }
+
+    private fun openJson(current: String) {
+        if (current == "json") {
+            intent = null
+        } else {
+            intent = Intent(context, JsonActivity::class.java)
         }
     }
 

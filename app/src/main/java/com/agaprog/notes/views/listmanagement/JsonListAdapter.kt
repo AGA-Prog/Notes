@@ -1,10 +1,10 @@
-package com.agaprog.notes.json
+package com.agaprog.notes.views.listmanagement
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import android.widget.AdapterView
 import androidx.recyclerview.widget.RecyclerView
 import com.agaprog.notes.databinding.ItemJsonListBinding
+import com.agaprog.notes.storage.JsonItem
 
 class JsonListAdapter (
     var jsonlist : List<JsonItem>,

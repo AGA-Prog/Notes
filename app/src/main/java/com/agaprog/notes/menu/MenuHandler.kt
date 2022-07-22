@@ -2,13 +2,12 @@ package com.agaprog.notes.menu
 
 import android.content.Context
 import android.content.Intent
-import android.util.Log
 import android.view.MenuItem
 import com.agaprog.notes.R
-import com.agaprog.notes.config.ConfigActivity
-import com.agaprog.notes.json.JsonActivity
+import com.agaprog.notes.views.config.ConfigActivity
+import com.agaprog.notes.views.listmanagement.JsonActivity
 import com.agaprog.notes.list.ListActivity
-import com.agaprog.notes.login.LoginActivity
+import com.agaprog.notes.views.login.LoginActivity
 
 class MenuHandler constructor(val context:Context, val current: String) {
     var intent:Intent? = null

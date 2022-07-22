@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "445671661722",
+    "project_id": "agaprog-notes",
+    "storage_bucket": "agaprog-notes.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:445671661722:android:379c3f091910df553a7f23",
+        "android_client_info": {
+          "package_name": "com.agaprog.notes"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "445671661722-o1bg0gs8u3ol084qv67h46vdeuogm7vq.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDM9RkPytnOm0uCIwSatjarczHoQYdJmVQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "445671661722-o1bg0gs8u3ol084qv67h46vdeuogm7vq.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

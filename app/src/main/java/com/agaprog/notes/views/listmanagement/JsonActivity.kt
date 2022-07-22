@@ -1,14 +1,15 @@
-package com.agaprog.notes.json
+package com.agaprog.notes.views.listmanagement
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.agaprog.notes.R
 import com.agaprog.notes.databinding.ActivityJsonBinding
+import com.agaprog.notes.storage.JsonItem
+import com.agaprog.notes.json.JsonService
 import com.agaprog.notes.menu.MenuHandler
 
 class JsonActivity : AppCompatActivity() {
@@ -67,7 +68,7 @@ class JsonActivity : AppCompatActivity() {
 
     fun deleteHandler(jsonItem: JsonItem, pos: Int) {
         val jsonService = JsonService(this)
-        jsonService.deleteFile(jsonItem.name)
+        jsonService.deleteFile(jsonItem)
         jsonListAdapter.jsonlist = jsonService.readFileList()
         jsonListAdapter.notifyItemRemoved(pos)
     }

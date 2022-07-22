@@ -2,36 +2,47 @@ package com.agaprog.notes.list
 
 import android.content.Context
 import android.util.Log
+import com.agaprog.notes.config.ConfigService
+import com.agaprog.notes.entities.Note
+import com.agaprog.notes.json.JsonService
 import com.agaprog.notes.list.item.Item
+import com.agaprog.notes.storage.INotesRepository
+import com.agaprog.notes.storage.StorageTypes
+import com.agaprog.notes.storage.firebase.NotesRepositoryFirebase
+import com.agaprog.notes.storage.local.NotesRepositoryLocal
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import org.json.JSONArray
 import java.io.IOException
 
-class ListService constructor(context: Context) {
+class ListService constructor(val context: Context) {
 
-    var list = mutableListOf<Item>()
+    lateinit var list : ToDoList
+    lateinit var notes: List<Note>
+    lateinit var notesRepository : INotesRepository
+    private lateinit var configService: ConfigService
 
     init {
-        try {
-            val json = JSONArray(context.assets.open("example.json").bufferedReader().use { it.readText() })
-            list = parseJson(json)
-
-                   }
-        catch (ioException: IOException) {
-            Log.d("Error", ioException.toString())
+        val defaultId = String
+        configService = ConfigService(context)
+        when (configService.getSelectedStorage()) {
+            StorageTypes.FIREBASE -> {
+                notesRepository = NotesRepositoryFirebase(context)
+                defaultId = configService.getDefaultFirebaseNode()
+            }
+            StorageTypes.LOCAL -> {
+                notesRepository = NotesRepositoryLocal(context)
+                defaultId = configService.getDefaultFileName()
+            }
         }
+        notes = notesRepository.readNotesById(configService)
     }
-    fun parseJson(json: JSONArray): MutableList<Item> {
-        var list = mutableListOf<Item>()
-        for (i in 0 until json.length()) {
-            val jsonObject = json.getJSONObject(i)
-            val item = Item(
-                jsonObject.optString("title"),
-                jsonObject.optString("description"),
-                jsonObject.getLong("creationDate"),
-                jsonObject.getBoolean("check")
-            )
-            list.add(item)
-        }
-    return list
+
+    fun getListFromFile() {
+        val file = JsonService(context).getSelectedFile()
+        val json = file.inputStream().bufferedReader().use { it.readText() }
+
+        val gson = GsonBuilder().create()
+        list = gson.fromJson(json, MutableList<Item>)
     }
 }

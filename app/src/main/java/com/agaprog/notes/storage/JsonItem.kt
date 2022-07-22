@@ -1,4 +1,4 @@
-package com.agaprog.notes.json
+package com.agaprog.notes.storage
 
 class JsonItem(
     val name : String = "",
